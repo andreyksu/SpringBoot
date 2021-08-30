@@ -1,0 +1,86 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+
+
+  
+#folders
+**/target
+**/.settings
+**/tools
+**/pdu
+**/.idea/
+**/out
+**/.idea_modules
+
+
+# Mobile Tools for Java (J2ME)
+**/.mtj.tmp/
+
+# BlueJ files
+*.ctxt
+
+# Compiled class file
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Log file
+*.log
+
+#IDEA
+*.iml
+
+#Eclipse
+*.classpath
+*.project
+**/.settings
+**/.metadata
+
+# virtual machine crash logs
+hs_err_pid*
+
+*.iws
+**/bin
+
+#asm  
+*.tmp
+*.obj
+*.hex
