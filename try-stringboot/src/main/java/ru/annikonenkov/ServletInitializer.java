@@ -3,6 +3,7 @@ package ru.annikonenkov;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
+//2
 public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
