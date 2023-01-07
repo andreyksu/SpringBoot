@@ -1,4 +1,4 @@
-package ru.annikonenkov.enity.photo;
+package ru.annikonenkov.enity.person.photo;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -13,7 +13,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.transaction.annotation.Transactional;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import ru.annikonenkov.enity.person.Person;
 
@@ -34,15 +34,16 @@ public class PersonPhoto {
 
     @Lob
     @Column(name = "photo")
-    //@Basic(fetch = FetchType.EAGER) //Если без @Transactional то FetchType.EAGER тоже не помогает.
+    // @Basic(fetch = FetchType.EAGER) //Если без @Transactional то FetchType.EAGER тоже не помогает.
     @Basic(fetch = FetchType.LAZY)
     private byte[] fileOfPhoto;
 
     @Column(name = "mime")
     private String mime;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_photo_on_a_person"), nullable = false)
+    @JsonIgnore
     private Person person;
 
     public void setId(int id) {
@@ -73,6 +74,7 @@ public class PersonPhoto {
         this.fileOfPhoto = byteArray;
     }
 
+    @JsonIgnore
     public byte[] getFileOfPhoto() {
         return this.fileOfPhoto;
     }
@@ -90,13 +92,14 @@ public class PersonPhoto {
         this.person = person;
     }
 
+    @JsonIgnore
     public Person getPerson() {
         return this.person;
     }
 
     @Override
     public String toString() {
-        return String.format("Photo {id = %d, photoName = %s, mime = %s}", id, photoName, mime);
+        return String.format("Photo::: {id = %d, photoName = %s, mime = %s, size = %d}", id, photoName, mime, size);
     }
 
 }

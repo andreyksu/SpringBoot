@@ -26,11 +26,13 @@ public class PersonPetLink {
     @Column(name = "spring_additional_field")
     private String additionalField;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    // @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "person_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_link_on_a_person"), nullable = false)
     private Person personOwner;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    // @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "pet_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_link_on_a_pet"), nullable = false)
     private Pet pet;
 
@@ -41,7 +43,7 @@ public class PersonPetLink {
     public int getId() {
         return this.id;
     }
-    
+
     public void setAdditionalField(String additionalField) {
         this.additionalField = additionalField;
     }
@@ -49,17 +51,16 @@ public class PersonPetLink {
     public String getAdditionalField() {
         return this.additionalField;
     }
-    
-    
+
     public void setPerson(Person person) {
-        person.getLink().add(this);
+        person.getPetsLinks().add(this);
         this.personOwner = person;
     }
 
     public Person getPerson() {
         return this.personOwner;
-    }    
-    
+    }
+
     public void setPet(Pet pet) {
         pet.getLink().add(this);
         this.pet = pet;
@@ -68,7 +69,5 @@ public class PersonPetLink {
     public Pet getPet() {
         return this.pet;
     }
-    
-    
 
 }
